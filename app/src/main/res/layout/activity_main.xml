@@ -3,14 +3,33 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp"
+    android:orientation="vertical"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".activity.MainActivity">
 
-    <TextView
-        android:id="@+id/hello_tv"
+    <Button
+        android:id="@+id/hello_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        android:textSize="25dp" />
+        android:text="跳转"
+        android:textSize="15dp" />
+
+    <Button
+        android:layout_marginTop="5dp"
+        android:id="@+id/video_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="video"
+        android:textSize="15dp" />
+
+    <Button
+        android:layout_marginTop="5dp"
+        android:id="@+id/scroll_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="滑动悬停"
+        android:textSize="15dp" />
 
 </LinearLayout>

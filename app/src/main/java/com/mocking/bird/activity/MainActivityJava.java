@@ -10,6 +10,7 @@ import com.mocking.bird.R;
 import com.mocking.bird.annotation.AnnotationActivity;
 import com.mocking.bird.annotation.BindView;
 import com.mocking.bird.annotation.BindViewUtils;
+import com.mocking.bird.kotlin.KotlinActivity;
 import com.mocking.bird.retrofit.MkRetrofit;
 import com.mocking.bird.retrofit.WeatherApi;
 
@@ -20,7 +21,7 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivityJava extends AppCompatActivity {
 
     @BindView(R.id.hello_btn)
     Button mHelloBtn;
@@ -28,8 +29,8 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.video_btn)
     Button mVideoBtn;
 
-    @BindView(R.id.scroll_btn)
-    Button mScrollBtn;
+    @BindView(R.id.kotlin_btn)
+    Button mKotlinBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
         mHelloBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, AnnotationActivity.class);
+                Intent intent = new Intent(MainActivityJava.this, AnnotationActivity.class);
                 intent.putExtra("name", "mockingbird");
                 intent.putExtra("age", 11);
                 startActivity(intent);
@@ -74,14 +75,15 @@ public class MainActivity extends AppCompatActivity {
         mVideoBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                VideoActivity.start(MainActivity.this);
+                VideoActivity.start(MainActivityJava.this);
             }
         });
 
-        mScrollBtn.setOnClickListener(new View.OnClickListener() {
+        mKotlinBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(MainActivityJava.this, KotlinActivity.class);
+                startActivity(intent);
             }
         });
     }

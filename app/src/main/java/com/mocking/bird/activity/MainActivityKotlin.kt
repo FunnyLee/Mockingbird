@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.mocking.bird.R
 import com.mocking.bird.annotation.AnnotationActivity
 import com.mocking.bird.kotlin.KotlinActivity
+import com.mocking.bird.kotlin.LoginActivity
 import com.mocking.bird.retrofit.MkRetrofit
 import com.mocking.bird.retrofit.WeatherApi
 import kotlinx.android.synthetic.main.activity_main.*
@@ -29,6 +30,7 @@ class MainActivityKotlin : AppCompatActivity(), View.OnClickListener {
         hello_btn.setOnClickListener(this)
         video_btn.setOnClickListener(this)
         kotlin_btn.setOnClickListener(this)
+        login_btn.setOnClickListener(this)
 
 //        initEvent()
 
@@ -67,6 +69,9 @@ class MainActivityKotlin : AppCompatActivity(), View.OnClickListener {
             R.id.kotlin_btn -> {
                 val intent: Intent = Intent(this, KotlinActivity::class.java)
                 startActivity(intent)
+            }
+            R.id.login_btn -> {
+                LoginActivity.starter(this)
             }
         }
     }

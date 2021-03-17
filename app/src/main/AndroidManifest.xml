@@ -21,7 +21,8 @@
 
         <activity android:name=".activity.VideoActivity" />
         <activity android:name=".annotation.AnnotationActivity" />
-        <activity android:name=".kotlin.KotlinActivity"/>
+        <activity android:name=".kotlin.KotlinActivity" />
+        <activity android:name=".kotlin.LoginActivity" />
     </application>
 
 </manifest>

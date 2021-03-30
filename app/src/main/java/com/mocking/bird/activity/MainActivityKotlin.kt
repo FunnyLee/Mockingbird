@@ -12,9 +12,11 @@ import com.mocking.bird.kotlin.LoginActivity
 import com.mocking.bird.retrofit.MkRetrofit
 import com.mocking.bird.retrofit.WeatherApi
 import kotlinx.android.synthetic.main.activity_main.*
-import okhttp3.Call
-import okhttp3.Callback
-import okhttp3.Response
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+import okhttp3.*
 import java.io.IOException
 
 /**
@@ -31,6 +33,7 @@ class MainActivityKotlin : AppCompatActivity(), View.OnClickListener {
         video_btn.setOnClickListener(this)
         kotlin_btn.setOnClickListener(this)
         login_btn.setOnClickListener(this)
+        coroutine_btn.setOnClickListener(this)
 
 //        initEvent()
 
@@ -73,6 +76,9 @@ class MainActivityKotlin : AppCompatActivity(), View.OnClickListener {
             R.id.login_btn -> {
                 LoginActivity.starter(this)
             }
+            R.id.coroutine_btn -> {
+                coroutine()
+            }
         }
     }
 
@@ -92,6 +98,45 @@ class MainActivityKotlin : AppCompatActivity(), View.OnClickListener {
                 }
             }
         })
+    }
+
+    private fun coroutine() {
+        val okHttpClient = OkHttpClient()
+        val request = Request.Builder().url("https://baidu.com").get().build()
+
+        //线程
+//        val thread = object : Thread() {
+//            override fun run() {
+//                super.run()
+//                val response = okHttpClient.newCall(request).execute().body()?.string()
+//                Log.d("OkHttp", response)
+//            }
+//        }
+//        thread.start()
+
+        //协程
+        runBlocking {
+            launch {
+                async(Dispatchers.IO) {
+                    val response = okHttpClient.newCall(request).execute().body()?.string()
+                    Log.d("OkHttp", response)
+                }
+            }
+        }
+
+
+//        runBlocking {
+//            launch {
+//                val async = async(Dispatchers.IO) {
+//                    val response = okHttpClient.newCall(request).execute().body()?.string()
+//                    response
+//                }
+//                val await = async.await()
+//                Log.d("OkHttp", await)
+//            }
+//        }
+
+
     }
 }
 

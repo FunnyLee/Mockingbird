@@ -6,6 +6,10 @@ package com.mocking.bird.kotlin
  * Description: This is Test
  */
 class Test {
+    fun sum(a: Int, b: Int): Int {
+        return a + b
+    }
+
 }
 
 fun main(args: Array<String>) {
@@ -20,8 +24,27 @@ fun main(args: Array<String>) {
 
 //    testArray()
 
-    var person: Person = Person("Tom")
-    println("名字是${person.name}, 年龄是${person.age}, 地址是${person.address}")
+//    var person: Person = Person("Tom")
+//    println("名字是${person.name}, 年龄是${person.age}, 地址是${person.address}")
+
+
+    val method1 = { x: Int, y: Int -> x + y }
+    println(method1(1, 2))
+
+    val method2: (Int, Int) -> Int = { x, y -> x + y }
+
+    val method3: (Int) -> Int = { it + 1 }
+    println(method3(4))
+
+    val method4: (Int) -> Unit = { println(it + 1) }
+    method4(6)
+
+    val method5 = { println("method5") }
+    method5()
+
+    val testLam = testLam(1, { x: Int, y: Int -> x + y })
+    println(testLam)
+
 }
 
 fun add(a: Int, b: Int): Int {
@@ -80,6 +103,10 @@ fun testArray() {
     }
 }
 
+fun testLam(a: Int, b: (Int, Int) -> Int): Int {
+    return a + b.invoke(30, 40)
+}
+
 class Person constructor(name: String) {
 
     var name = name
@@ -91,6 +118,6 @@ class Person constructor(name: String) {
     init {
         println("这是个人")
     }
-
 }
+
 
